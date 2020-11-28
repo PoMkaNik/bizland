@@ -254,7 +254,8 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <!--materialize.js-->
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDuLnI7ljQq_e8iw2uw2BWsS7aOSNfbSXc&callBack"></script>
+  <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuLnI7ljQq_e8iw2uw2BWsS7aOSNfbSXc&callback=showGoogleMaps"></script>
   <script>
     $(document).ready(function () {
       // Custom JS & jQuery
@@ -283,10 +284,12 @@
       });
 
       //  google maps
-      const position = [42.361145, -71.057083];
-      const centerPosition = [42.377815, -70.981133];
+
 
       function showGoogleMaps() {
+        const position = [42.361145, -71.057083];
+        const centerPosition = [42.377815, -70.981133];
+
         const latLng = new google.maps.LatLng(position[0], position[1]);
         const centerLatLng = new google.maps.LatLng(centerPosition[0], centerPosition[1]);
 
@@ -299,10 +302,10 @@
 
         const mapDiv = document.getElementById('googlemap');
 
-        map = new google.maps.Map(mapDiv, mapOptions);
+        const map = new google.maps.Map(mapDiv, mapOptions);
 
         // marker
-        marker = new google.maps.Marker({
+        new google.maps.Marker({
           position: latLng,
           map: map,
           draggable: false,
@@ -312,7 +315,8 @@
       }
 
       // maps event
-      google.maps.event.addDomListener(window, 'load', showGoogleMaps);
+      // google.maps.event.addDomListener(window, 'load', showGoogleMaps);
+
 
     });
   </script>
